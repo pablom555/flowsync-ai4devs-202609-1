@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_response.filePath // .tool_input.file_path'); case \"$f\" in \"$CLAUDE_PROJECT_DIR\"/frontend/src/*) cd \"$CLAUDE_PROJECT_DIR/frontend\" && npx prettier --write --ignore-unknown \"$f\" >/dev/null 2>&1 ;; esac; exit 0",
+            "statusMessage": "Formatting frontend file..."
+          }
+        ]
+      }
+    ]
+  }
+}
