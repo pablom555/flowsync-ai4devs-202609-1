@@ -11,9 +11,9 @@ import {
 } from '@/components/ui/card'
 
 export function LoginPage() {
-  const { user } = useAuth()
+  const { user, isLoading } = useAuth()
 
-  if (user) {
+  if (!isLoading && user) {
     return <Navigate to="/profile" replace />
   }
 
