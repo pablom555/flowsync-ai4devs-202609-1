@@ -53,7 +53,7 @@ Un equipo chico no tiene un lugar único donde ver todo lo que hay que hacer. Co
 | Archivar y restaurar una tarea | **Should** |
 | Comentar en una tarea | **Won't** (reevaluable) |
 | Fecha de vencimiento de una tarea, con indicador de "vencida" visible para todos | **Must** (revisado: antes Won't) |
-| Agregados de vencidas por persona (conteos, rankings, listados de "atrasados") | **Won't** |
+| Agregados de vencidas por persona (conteos, rankings, listados o agrupaciones de personas "atrasadas") | **Won't** |
 | Roles y permisos avanzados | **Won't** |
 | Notificaciones / integración con Slack | **Won't** |
 | Multi-equipo | **Won't** |
@@ -69,6 +69,7 @@ Un equipo chico no tiene un lugar único donde ver todo lo que hay que hacer. Co
 - **Notificaciones / Slack (Won't).** Son una segunda superficie de comunicación. El MVP resuelve el "lugar único"; avisar es otro problema.
 - **Multi-equipo (Won't).** Exige un modelo de equipo y pertenencia que no existe. El MVP asume un único equipo global.
 - **Agregados de vencidas por persona (Won't).** Contar, listar u ordenar personas por tareas vencidas es exactamente la métrica "quién está atrasado" que el principio de §3 descarta. Se mantiene fuera aunque la fecha de vencimiento entre al MVP.
+- **Tiempo real (Won't).** Los cambios son visibles al recargar o volver a entrar. Sale del alcance por costo; su efecto sobre el problema se discute en §8, supuesto S6.
 
 ### Revisión sobre la versión anterior: fecha de vencimiento
 
@@ -79,7 +80,6 @@ Un equipo chico no tiene un lugar único donde ver todo lo que hay que hacer. Co
 **Nueva justificación:** el riesgo que motivó el Won't no era la fecha, sino su agregación por persona. Una tarea puede mostrar si está vencida como un dato de la propia tarea, visible para todos, y eso ayuda a colaborar: cualquiera puede ver qué necesita atención sin preguntar. El tablero **nunca** cuenta, lista ni ordena personas por tareas vencidas; eso sigue siendo Won't y protege el principio de §3.
 
 **Qué sigue fuera:** los recordatorios y avisos de vencimiento siguen dentro de "Notificaciones / Slack" (Won't). La justificación anterior también mencionaba la ordenación; esta revisión no la decide (ver §6, decisión 6).
-- **Tiempo real (Won't).** Los cambios son visibles al recargar o volver a entrar. Sale del alcance por costo; su efecto sobre el problema se discute en §8, supuesto S6.
 
 ## 5. Requisitos funcionales
 
@@ -135,8 +135,14 @@ Cada requisito indica su categoría entre corchetes. RF-5, RF-10 y RF-14 aún no
 6. **Fecha de vencimiento en el MVP (revisión de la versión anterior, ver §4).** Reabre la decisión original de dejarla como Won't.
    - **Regla:** una tarea puede tener fecha de vencimiento y mostrar si está vencida, visible para todos los miembros. El tablero nunca agrega, cuenta ni lista "vencidas por persona" (Won't).
    - **Propuesta a validar:** la separación entre dato de la tarea y agregado por persona es suficiente para preservar §3. No hay evidencia de que el equipo lo perciba así; el guardrail de §7 es el que lo comprobaría.
-   - **Pendiente de definir:** si una tarea terminada con fecha pasada cuenta como vencida, la zona horaria de la fecha si se permite editar o quitar la fecha y si las tareas se ordenan por fecha (mientras no se decida, no se ordenan).
-   - **Fuera de esta revisión (no actualizado a propósito):** §5 no incluye aún requisitos funcionales para la fecha, y §7 y §8 no reflejan el cambio. Quedan desactualizados hasta una revisión posterior: §5 no cubre la fecha, y §8 (S2, I5 y el resto del análisis) fue escrito con la fecha en Won't.
+   - **Riesgo reconocido:** con el responsable visible en cada tarea (RF-8), cualquiera puede contar a mano las vencidas de una persona. La regla prohíbe que el tablero lo calcule o lo presente, no que alguien lo haga mentalmente; por eso el guardrail de §7 es la única comprobación real.
+   - **Pendiente de definir:**
+     1. si una tarea terminada con fecha pasada cuenta como vencida;
+     2. la zona horaria de la fecha;
+     3. si se permite editar o quitar la fecha;
+     4. si las tareas se ordenan por fecha (mientras no se decida, no se ordenan);
+     5. si existe un filtro "solo vencidas" o una agrupación de tareas por responsable combinada con el indicador (mientras no se decida, no existen: reintroducirían el listado de "atrasados por persona").
+   - **Fuera de esta revisión (no actualizado a propósito):** §5 no tiene requisitos funcionales para la fecha ni para el indicador de vencida, así que este Must no es aún trazable ni testable. §2 sigue diciendo que quien planifica con fechas queda fuera del MVP. RF-8 (qué muestra cada tarea) y RF-10 (sin métricas por persona) no mencionan la fecha. §7 no ajusta las métricas ni el guardrail. §8 se escribió con la fecha en Won't, por lo que sus ítems sobre alcance (I7, C7 y C8) y sus supuestos sobre el problema pueden haber cambiado. Todo eso queda desactualizado hasta una revisión posterior.
 
 ## 7. Métricas de éxito
 
