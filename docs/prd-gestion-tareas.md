@@ -1,7 +1,7 @@
 # PRD — Gestión de tareas (MVP)
 
 **Producto:** FlowSync
-**Estado:** borrador para validar con el equipo
+**Estado:** borrador para validar con el equipo. **Bloqueado para implementar** hasta resolver I1 (el backend actual no tiene tareas ni listado de usuarios) y S2 (registro abierto); ver §8.
 **Alcance de este documento:** primer MVP entregable de la épica de gestión de tareas
 
 ---
@@ -71,7 +71,7 @@ Un equipo chico no tiene un lugar único donde ver todo lo que hay que hacer. Co
 
 ## 5. Requisitos funcionales
 
-Cada requisito indica su categoría entre corchetes.
+Cada requisito indica su categoría entre corchetes. RF-5, RF-10 y RF-14 aún no tienen criterio de aceptación testable (ver I9 e I10 en §8).
 
 ### Crear tarea
 - **RF-1** [Must]. Cualquier usuario registrado puede crear una tarea indicando un título.
